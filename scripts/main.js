@@ -40,6 +40,7 @@ Hooks.on('updateCombat', async function (combat, turns) {
 });
 
 async function combatMessageDialog() {
+    if (!game.user.isGM) return;
     $.get("modules/combat-messages/templates/dialog.hbs", function (data) {
         let dialog = new Dialog({
             title: "Combat Messages",
@@ -59,7 +60,6 @@ async function combatMessageDialog() {
                         round: html.find('.msg_round').val(),
                         actor: game.actors.get(html.find('.comb_msg').val())
                     });
-                    console.log(messages);
                     dialog.render(true);
                 });
                 html.find('.remove_msg').click(function (event){
