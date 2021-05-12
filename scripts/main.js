@@ -31,6 +31,9 @@ Hooks.on('updateCombat', async function (combat, turns) {
             if (msg.round == turns.round) {
                 let chatData = {
                     user: game.user._id,
+                    speaker: ChatMessage.getSpeaker({
+                        actor: msg.actor
+                    }),
                     content: `<img src="${msg.actor.img}" style='display: block; margin-left: auto; margin-right: auto;' /><h4 class="mediaeval" style="font-size:120%;">${msg.name}</h4>`
                 };
                 await ChatMessage.create(chatData);
