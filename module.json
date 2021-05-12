@@ -1,0 +1,17 @@
+{
+    "name": "combat-messages",
+    "title": "Combat Messages",
+    "description": "Lembretes para eventos de combate.",
+    "author": "Marcos Walker",
+    "version": "1.0.0",
+    "url": "https://github.com/marcoswalker/combat-messages",
+    "minimumCoreVersion": "0.7.9",
+    "compatibleCoreVersion": "0.7.9",
+    "esmodules": [
+        "scripts/main.js"
+    ],
+    "styles": [
+    ],
+    "manifest": "https://raw.githubusercontent.com/marcoswalker/combat-messages/master/module.json",
+    "download": "https://codeload.github.com/marcoswalker/combat-messages/zip/master"
+}
