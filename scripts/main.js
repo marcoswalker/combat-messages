@@ -54,7 +54,7 @@ async function combatMessageDialog() {
                     $('.msg_sv').append(`<li class="mediaeval"><img class="itemImg" title="${message.actor.name}" src="${message.actor.img}"/> ,${message.name} , Round: ${message.round}  <a class="remove_msg" data-msg="${message.mid}"><i class="far fa-trash-alt"></i></a></li>`);
                 });
                 combatants.forEach(function (combatant) {
-                    $('.comb_msg').append(`<option class="mediaeval" value="${combatant.actor._id}">${combatant.actor.name}</option>`);
+                    $('.comb_msg').append(`<option value="${combatant.actor._id}">${combatant.actor.name}</option>`);
                 });
                 html.find('.add_msg').click(function () {
                     if (html.find('.msg_name').val() != "" && html.find('.msg_round').val() != "" && html.find('.comb_msg').val() != null) {
