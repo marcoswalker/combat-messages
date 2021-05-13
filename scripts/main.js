@@ -57,13 +57,17 @@ async function combatMessageDialog() {
                     $('.comb_msg').append(`<option class="mediaeval" value="${combatant.actor._id}">${combatant.actor.name}</option>`);
                 });
                 html.find('.add_msg').click(function () {
-                    messages.push({
-                        mid: messages.length + 1,
-                        name: html.find('.msg_name').val(),
-                        round: html.find('.msg_round').val(),
-                        actor: game.actors.get(html.find('.comb_msg').val())
-                    });
-                    dialog.render(true);
+                    if (html.find('.msg_name').val() != "" && html.find('.msg_round').val() != "" && html.find('.comb_msg').val() != null) {
+                        messages.push({
+                            mid: messages.length + 1,
+                            name: html.find('.msg_name').val(),
+                            round: html.find('.msg_round').val(),
+                            actor: game.actors.get(html.find('.comb_msg').val())
+                        });
+                        dialog.render(true);
+                    } else {
+                        ui.notifications.warn("Algum campo não foi preenchido, um combatente pode ser selecionado quando um combate estiver ativo.");
+                    }
                 });
                 html.find('.remove_msg').click(function (event){
                     let delete_msg = $(event.currentTarget).data('msg');

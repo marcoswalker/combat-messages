@@ -3,7 +3,7 @@
     "title": "Combat Messages",
     "description": "Lembretes para eventos de combate.",
     "author": "Marcos Walker",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "url": "https://github.com/marcoswalker/combat-messages",
     "minimumCoreVersion": "0.7.9",
     "compatibleCoreVersion": "0.7.9",
