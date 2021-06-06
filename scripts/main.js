@@ -15,8 +15,14 @@ Hooks.on("getSceneControlButtons", (controls) => {
 
 Hooks.on("renderCombatTracker", function (combatTracker) {
     if (!game.user.isGM) return;
-    if (combatTracker.combat) {
-        combatants = combatTracker.combat.combatants;
+    if (combatTracker.combats.length > 0) {
+        combatants = [];
+        for (let combat of combatTracker.combats) {
+            for (let combatant of combat.combatants) {
+                combatants.push(combatant);
+            }
+        }
+        //combatants = combatTracker.combat.combatants;
     } else {
         combatants = [];
         messages = [];
@@ -30,7 +36,7 @@ Hooks.on('updateCombat', async function (combat, turns) {
         for (let msg of messages) {
             if (msg.round == turns.round) {
                 let chatData = {
-                    user: game.user._id,
+                    user: game.user.id,
                     speaker: ChatMessage.getSpeaker({
                         actor: msg.actor
                     }),
@@ -54,7 +60,7 @@ async function combatMessageDialog() {
                     $('.msg_sv').append(`<li class="mediaeval"><img class="itemImg" title="${message.actor.name}" src="${message.actor.img}"/> ,${message.name} , Round: ${message.round}  <a class="remove_msg" data-msg="${message.mid}"><i class="far fa-trash-alt"></i></a></li>`);
                 });
                 combatants.forEach(function (combatant) {
-                    $('.comb_msg').append(`<option value="${combatant.actor._id}">${combatant.actor.name}</option>`);
+                    $('.comb_msg').append(`<option value="${combatant.actor.id}">${combatant.actor.name}</option>`);
                 });
                 html.find('.add_msg').click(function () {
                     if (html.find('.msg_name').val() != "" && html.find('.msg_round').val() != "" && html.find('.comb_msg').val() != null) {
